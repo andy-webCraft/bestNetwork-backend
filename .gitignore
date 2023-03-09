@@ -13,9 +13,7 @@
 
 # misc
 mock/
-*.jpg
-*.jpeg
-*.png
+public/
 .DS_Store
 .env
 .env.local
