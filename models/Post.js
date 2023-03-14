@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { fileService } from "../services/file.js";
 
 const PostSchema = new mongoose.Schema(
   {
@@ -10,10 +9,7 @@ const PostSchema = new mongoose.Schema(
       get: (value) => value.toString(),
     },
     description: String,
-    picturePath: {
-      type: String,
-      transform: (value) => (value ? fileService.getStorageFullUrl(value) : value),
-    },
+    picturePath: { type: String, default: "" },
     likes: [
       {
         type: mongoose.Schema.Types.ObjectId,

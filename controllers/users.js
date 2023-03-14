@@ -1,5 +1,5 @@
 import User from "../models/User.js";
-import { fileService } from "../services/file.js";
+import { imageService } from "../services/image.js";
 
 /* GET USER */
 export const getUser = async (req, res, next) => {
@@ -54,10 +54,7 @@ export const updateUser = async (req, res, next) => {
     const newData = req.body;
 
     if (req.file) {
-      const userPicture = await User.getUserPicturePath(userId);
-
-      fileService.deleteFromStorage(userPicture.picturePath);
-      newData.picturePath = fileService.getFullPath(req.file);
+      newData.picturePath = await imageService.uploadImage(req.file);
     } else {
       delete newData.picture;
       delete newData.picturePath;

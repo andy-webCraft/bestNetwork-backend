@@ -1,11 +1,11 @@
 import express from "express";
 import { registerUser, loginUser, logoutUser, refreshTokens } from "../controllers/auth.js";
-import { uploadPicture } from "../middleware/uploadFile.js";
+import { handleImageFile } from "../middleware/image.js";
 
 const router = express.Router();
 
 /* POST */
-router.post("/register", uploadPicture, registerUser);
+router.post("/register", handleImageFile, registerUser);
 router.post("/login", loginUser);
 
 /* GET */

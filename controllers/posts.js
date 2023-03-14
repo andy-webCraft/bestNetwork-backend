@@ -2,7 +2,7 @@ import User from "../models/User.js";
 import Post from "../models/Post.js";
 import Comment from "../models/Comment.js";
 import ApiError from "../services/error.js";
-import { fileService } from "../services/file.js";
+import { imageService } from "../services/image.js";
 
 /* CREATE NEW POST */
 export const createPost = async (req, res, next) => {
@@ -10,7 +10,11 @@ export const createPost = async (req, res, next) => {
     const { userId } = req;
     const { description } = req.body;
 
-    const picturePath = req.file ? fileService.getFullPath(req.file) : null;
+    let picturePath = "";
+
+    if (req.file) {
+      picturePath = await imageService.uploadImage(req.file);
+    }
 
     const newPost = new Post({
       author: userId,
@@ -149,10 +153,6 @@ export const deletePost = async (req, res, next) => {
 
     if (post.author !== userId) {
       return next(ApiError.accessDenied());
-    }
-
-    if (post.picturePath) {
-      fileService.deleteFromStorage(post.picturePath);
     }
 
     await post.deleteOne();

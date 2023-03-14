@@ -9,12 +9,12 @@ import {
   deleteComment,
 } from "../controllers/posts.js";
 import { verifyAccessToken } from "../middleware/auth.js";
-import { uploadPicture } from "../middleware/uploadFile.js";
+import { handleImageFile } from "../middleware/image.js";
 
 const router = express.Router();
 
 /* POST */
-router.post("/", verifyAccessToken, uploadPicture, createPost);
+router.post("/", verifyAccessToken, handleImageFile, createPost);
 router.post("/:postId/comments", verifyAccessToken, addComment);
 
 /* GET */

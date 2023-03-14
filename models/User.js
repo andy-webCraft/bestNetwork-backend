@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { fileService } from "../services/file.js";
 
 const UserSchema = new mongoose.Schema(
   {
@@ -27,10 +26,7 @@ const UserSchema = new mongoose.Schema(
       min: 3,
       select: false,
     },
-    picturePath: {
-      type: String,
-      transform: (value) => (value ? fileService.getStorageFullUrl(value) : value),
-    },
+    picturePath: { type: String, default: "" },
     friends: [
       {
         type: mongoose.Schema.Types.ObjectId,

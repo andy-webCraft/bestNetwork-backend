@@ -1,14 +1,19 @@
 import bcrypt from "bcrypt";
 import User from "../models/User.js";
 import ApiError from "../services/error.js";
-import { fileService } from "../services/file.js";
+import { imageService } from "../services/image.js";
 import { refreshTokenConfig, tokenService } from "../services/token.js";
 
 /* REGISTER NEW USER */
 export const registerUser = async (req, res, next) => {
   try {
     const { firstName, lastName, email, password, friends, location, occupation } = req.body;
-    const picturePath = req.file ? fileService.getFullPath(req.file) : null;
+
+    let picturePath = "";
+
+    if (req.file) {
+      picturePath = await imageService.uploadImage(req.file);
+    }
 
     const salt = await bcrypt.genSalt();
     const passwordHash = await bcrypt.hash(password, salt);
