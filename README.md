@@ -1,6 +1,6 @@
 # Backend for Best Network App
 [Best Network - Frontend](https://github.com/andy-webCraft/bestNetwork-frontend) \
-[Live demo]()
+[Live demo](https://best-network.onrender.com)
 
 ## Tools:
 - Node.js
@@ -15,12 +15,15 @@
 - multer
 - dotenv
 
+## Services:
+- [ImageBB](https://imgbb.com/) - for hosting images
+
 ## Implemented functionality:
 - User registration and authorization
 - User authentication with jwt tokens
 - Updating user information
 - Сreating and deleting posts and comments
-- Uploading and deleting images for avatars and posts
+- Uploading images for avatars and posts
 - Error handling
 
 ## Available Scripts:
