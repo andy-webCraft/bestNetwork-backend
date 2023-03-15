@@ -19,12 +19,12 @@
 - [ImageBB](https://imgbb.com/) - for hosting images
 
 ## Implemented functionality:
-- User registration and authorization
-- User authentication with jwt tokens
-- Updating user information
-- Сreating and deleting posts and comments
-- Uploading images for avatars and posts
-- Error handling
+- user registration and authorization
+- user authentication with jwt tokens
+- updating user information
+- creating and deleting posts and comments
+- uploading images for avatars and posts
+- error handling
 
 ## Available Scripts:
 In the project directory, you can run:
