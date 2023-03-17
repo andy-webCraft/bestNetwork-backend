@@ -10,14 +10,16 @@ const PostSchema = new mongoose.Schema(
     },
     description: String,
     picturePath: { type: String, default: "" },
-    likes: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        unique: true,
-        get: (value) => value.toString(),
-      },
-    ],
+    likes: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+          get: (value) => value.toString(),
+        },
+      ],
+      default: [],
+    },
     comments: [
       { type: mongoose.Schema.Types.ObjectId, ref: "Comment", get: (value) => value.toString() },
     ],
