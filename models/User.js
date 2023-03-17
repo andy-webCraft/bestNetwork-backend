@@ -27,14 +27,17 @@ const UserSchema = new mongoose.Schema(
       select: false,
     },
     picturePath: { type: String, default: "" },
-    friends: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "User",
-        unique: true,
-        get: (value) => value.toString(),
-      },
-    ],
+    friends: {
+      type: [
+        {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "User",
+          unique: true,
+          get: (value) => value.toString(),
+        },
+      ],
+      default: [],
+    },
     location: { type: String, required: true },
     occupation: { type: String, default: "" },
     links: {
